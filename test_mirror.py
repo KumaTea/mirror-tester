@@ -71,6 +71,7 @@ def test_mirror(mirror_url):
             tiny_files_total_time += time_cost
     if tiny_files_test_count:
         tiny_files_point = 1024 * tiny_files_total_point / tiny_files_test_count
+        tiny_files_point = 100 if tiny_files_point > 100 else tiny_files_point
         tiny_files_speed, tiny_files_unit = get_file_size_unit(tiny_files_total_size / tiny_files_total_time)
         tiny_files_speed_str = f'{tiny_files_speed:.2f} {tiny_files_unit[0]}B/s'
     else:
