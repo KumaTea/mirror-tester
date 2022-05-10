@@ -19,5 +19,5 @@ def benchmark(files_list):
             time_cost += end_time - start_time
 
     time_cost_string = f'{time_cost * 1000:.3f} ms' if time_cost < 1 else f'{time_cost:.3f} s'
-    print(f"Downloaded {get_file_size_unit(file_size)[0]:.3f} {get_file_size_unit(file_size)[1]} in {time_cost_string}")
+    print(f"Downloaded {get_file_size_unit(file_size)[0]:.2f} {get_file_size_unit(file_size)[1]} in {time_cost_string}")
     return file_size, time_cost

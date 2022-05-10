@@ -27,7 +27,7 @@ def get_speed_points(file_size, time_cost):
     max_speed = 1024 * 1024 * 100  # 100MB/s
     speed = file_size / time_cost  # Bytes/s
     bps = get_file_size_unit(speed * 8)
-    print(f'Download speed: {bps[0]} {bps[1][:1]}bps')
+    print(f'Download speed: {bps[0]:.2f} {bps[1][:1]}bps')
     if speed > max_speed:
         return 100
     else:
@@ -69,9 +69,13 @@ def test_mirror(mirror_url):
             tiny_files_test_count += 1
             tiny_files_total_size += file_size
             tiny_files_total_time += time_cost
-    tiny_files_point = tiny_files_total_point / tiny_files_test_count
-    tiny_files_speed, tiny_files_unit = get_file_size_unit(tiny_files_total_size / tiny_files_total_time)
-    tiny_files_speed_str = f'{tiny_files_speed:.2f} {tiny_files_unit[0]}B/s'
+    if tiny_files_test_count:
+        tiny_files_point = 1024 * tiny_files_total_point / tiny_files_test_count
+        tiny_files_speed, tiny_files_unit = get_file_size_unit(tiny_files_total_size / tiny_files_total_time)
+        tiny_files_speed_str = f'{tiny_files_speed:.2f} {tiny_files_unit[0]}B/s'
+    else:
+        tiny_files_point = 0
+        tiny_files_speed_str = '0 B/s'
 
     # Large files download test
     # large_files_point = 0
@@ -92,9 +96,13 @@ def test_mirror(mirror_url):
             large_files_test_count += 1
             large_files_total_size += file_size
             large_files_total_time += time_cost
-    large_files_point = large_files_total_point / large_files_test_count
-    large_files_speed, large_files_unit = get_file_size_unit(large_files_total_size / large_files_total_time)
-    large_files_speed_str = f'{large_files_speed:.2f} {large_files_unit[0]}B/s'
+    if large_files_test_count:
+        large_files_point = large_files_total_point / large_files_test_count
+        large_files_speed, large_files_unit = get_file_size_unit(large_files_total_size / large_files_total_time)
+        large_files_speed_str = f'{large_files_speed:.2f} {large_files_unit[0]}B/s'
+    else:
+        large_files_point = 0
+        large_files_speed_str = '0 B/s'
 
     # Mirror richness test
     available_repos = 0
@@ -110,6 +118,7 @@ def test_mirror(mirror_url):
     final_points += tiny_files_point * (50 / 100)
     final_points += large_files_point * (30 / 100)
     final_points += mirror_richness_point * (10 / 100)
-    print(f'Final points: {final_points}')
+    final_points_str = f'{final_points:.2f}'
+    print(f'Final points: {final_points_str}')
 
-    return final_points, ping_result, tiny_files_speed_str, large_files_speed_str, richness_result
+    return final_points_str, ping_result, tiny_files_speed_str, large_files_speed_str, richness_result
