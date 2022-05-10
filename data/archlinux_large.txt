@@ -1,0 +1,10 @@
+pool/community/discord-0.0.17-1-x86_64.pkg.tar.zst
+extra/os/x86_64/qt5-examples-5.15.3-1-any.pkg.tar.zst
+community/os/x86_64/python-basemap-common-1.2.2-3-x86_64.pkg.tar.zst
+pool/community/lazarus-2.2.0-2-x86_64.pkg.tar.zst
+community/os/x86_64/endless-sky-0.9.14-1-x86_64.pkg.tar.zst
+pool/community/performous-freesongs-20100713-5-any.pkg.tar.zst
+community/os/x86_64/discord-canary-0.0.135-1-x86_64.pkg.tar.zst
+pool/packages/krita-5.0.6-1-x86_64.pkg.tar.zst
+pool/packages/oxygen-icons-1%3A5.93.0-1-any.pkg.tar.zst
+pool/community/ttc-iosevka-15.3.0-1-any.pkg.tar.zst

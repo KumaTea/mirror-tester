@@ -1,0 +1,10 @@
+linux/ubuntu/dists/disco/pool/nightly/amd64/docker-ce-cli_0.0.0-20190503050220-250bdba5a2-0~ubuntu-disco_amd64.deb
+linux/ubuntu/dists/xenial/pool/nightly/amd64/docker-ce-cli_0.0.0-20190625011444-de5684930c-0~ubuntu-xenial_amd64.deb
+linux/ubuntu/dists/disco/pool/nightly/amd64/docker-ce-cli_0.0.0-20190515210812-c58b5bc81a-0~ubuntu-disco_amd64.deb
+linux/ubuntu/dists/bionic/pool/nightly/amd64/docker-ce-cli_0.0.0-20190515210812-c58b5bc81a-0~ubuntu-bionic_amd64.deb
+linux/ubuntu/dists/cosmic/pool/nightly/amd64/docker-ce-cli_0.0.0-20190429210820-1134500493-0~ubuntu-cosmic_amd64.deb
+linux/ubuntu/dists/xenial/pool/test/arm64/docker-ce-cli_20.10.0~2.2.rc2-0~ubuntu-xenial_arm64.deb
+linux/ubuntu/dists/cosmic/pool/nightly/amd64/docker-ce-cli_0.0.0-20190626050337-cd08254517-0~ubuntu-cosmic_amd64.deb
+linux/ubuntu/dists/xenial/pool/nightly/amd64/docker-ce-cli_0.0.0-20190626050337-cd08254517-0~ubuntu-xenial_amd64.deb
+linux/ubuntu/dists/bionic/pool/nightly/amd64/docker-ce-cli_0.0.0-20190429210820-1134500493-0~ubuntu-bionic_amd64.deb
+linux/ubuntu/dists/bionic/pool/nightly/amd64/docker-ce-cli_0.0.0-20190606011545-41653cf9e8-0~ubuntu-bionic_amd64.deb

@@ -1,0 +1,10 @@
+v3.15/releases/s390x/alpine-standard-3.15.0-s390x.iso
+v3.15/releases/aarch64/netboot/modloop-lts
+v3.15/community/x86_64/openjdk15-jre-headless-15.0.7_p4-r0.apk
+v3.15/releases/armv7/alpine-virt-3.15.3-armv7.iso
+v3.15/community/x86_64/font-overpass-nerd-2.1.0-r7.apk
+v3.15/community/armv7/rust-stdlib-1.56.1-r0.apk
+v3.15/main/x86/ghostscript-dbg-9.55.0-r0.apk
+v3.15/community/armhf/gradle-7.2-r0.apk
+v3.15/releases/armv7/alpine-rpi-3.15.4-armv7.tar.gz
+v3.15/community/aarch64/thelounge-4.2.0-r2.apk

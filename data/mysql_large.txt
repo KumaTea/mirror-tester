@@ -1,0 +1,10 @@
+yum/mysql80-community-el7/mysql-community-client-8.0.19-1.el7.i686.rpm
+yum/mysql-5.6-community-el6-x86_64/mysql-community-embedded-devel-5.6.30-2.el6.x86_64.rpm
+downloads/MySQLGUITools/mysql-workbench-community-6.1.7-src.zip
+yum/mysql-5.7-community-el6-x86_64/mysql-community-test-5.7.32-1.el6.x86_64.rpm
+yum/mysql-5.6-community-el7-x86_64/mysql-community-embedded-devel-5.6.39-2.el7.i686.rpm
+yum/mysql57-community-el7/mysql-community-embedded-devel-5.7.13-1.el7.i686.rpm
+yum/mysql56-community-el6/mysql-community-test-5.6.45-2.el6.x86_64.rpm
+downloads/MySQL-5.6/mysql-server_5.6.51-1debian9_amd64.deb-bundle.tar
+downloads/MySQL-Cluster-7.5/mysql-cluster-community-client-7.5.26-1.sles12.x86_64.rpm
+yum/mysql-5.7-community-el6-x86_64/mysql-community-test-5.7.13-1.el6.x86_64.rpm

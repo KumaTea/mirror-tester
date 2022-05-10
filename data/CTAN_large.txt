@@ -1,0 +1,10 @@
+info/examples/Math_into_LaTeX-4/mil4-video-presentations.zip
+install/fonts/noto.tds.zip
+info/Math_into_LaTeX-4/samples/mil4-video-presentations.zip
+install/support/gregoriotex.tds.zip
+info/knuth-hint.zip
+info/symbols/comprehensive.zip
+info/knuth-pdf.zip
+install/fonts/alegreya.tds.zip
+install/fonts/roboto.tds.zip
+info/Math_into_LaTeX-4/mil4-video-presentations.zip

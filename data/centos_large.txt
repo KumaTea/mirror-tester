@@ -1,0 +1,10 @@
+8/storage/ppc64le/ceph-octopus/Packages/c/ceph-test-15.2.3-1.el8.ppc64le.rpm
+8/storage/x86_64/ceph-octopus/Packages/c/ceph-test-15.2.3-1.el8.x86_64.rpm
+8/storage/x86_64/ceph-octopus/Packages/c/ceph-test-15.2.10-4.el8.x86_64.rpm
+8/virt/x86_64/kata-containers/Packages/k/kata-containers-2.1.0-4.el8.x86_64.rpm
+8/virt/x86_64/kata-containers/Packages/k/kata-containers-2.0.1-1.el8.x86_64.rpm
+8/storage/x86_64/ceph-octopus/Packages/c/ceph-test-15.2.10-1.el8.x86_64.rpm
+8/storage/x86_64/ceph-octopus/Packages/c/ceph-test-15.2.9-2.el8.x86_64.rpm
+8/storage/x86_64/ceph-octopus/Packages/c/ceph-test-15.2.8-1.el8.x86_64.rpm
+8/storage/x86_64/ceph-octopus/Packages/c/ceph-test-15.2.4-1.el8.x86_64.rpm
+8/storage/x86_64/ceph-octopus/Packages/c/ceph-test-15.2.2-1.el8.x86_64.rpm
