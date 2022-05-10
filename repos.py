@@ -1,5 +1,5 @@
 # Test items
-test_items = {
+repositories = {
     'alpine': {
         'name': 'Alpine',
         'path': 'alpine'
@@ -40,10 +40,4 @@ test_items = {
         'name': 'Ubuntu',
         'path': 'ubuntu'
     }
-}
-
-large_files = {
-}
-
-tiny_files = {
 }
