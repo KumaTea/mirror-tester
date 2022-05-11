@@ -1,9 +1,10 @@
 import requests
+from tqdm import tqdm
 from ping import ping
 from speed import benchmark
 from tools import get_file_size_unit
 from configparser import ConfigParser
-from files_gen import tiny_file_total_size, large_file_total_size
+from gen_files import tiny_file_total_size, large_file_total_size
 
 
 def get_test_repos():
@@ -39,8 +40,10 @@ def test_mirror(mirror_url):
     print("Testing mirror:", mirror_url)
 
     # Ping test
+    domain = mirror_url.replace('https://', '').replace('http://', '').replace('/', '')
+    print("[1/4] Pinging", domain)
     ping_point = 0
-    ping_result = ping(mirror_url.replace('https://', '').replace('http://', '').replace('/', ''))
+    ping_result = ping(domain)
     if ping_result:
         print(f'Ping result: {ping_result} ms')
         ping_point = 100.0 - ping_result
@@ -50,16 +53,30 @@ def test_mirror(mirror_url):
 
     repos = get_test_repos()
 
+    # Mirror richness test
+    print("[2/4] Available repos test")
+    available_repos = []
+    for repo in tqdm(repos):
+        try:
+            r = requests.get(f'{mirror_url}/{repo}/', timeout=5)
+            if r.status_code == 200:
+                available_repos.append(repo)
+        except:
+            pass
+    mirror_richness_point = len(available_repos) / len(repos) * 100
+    richness_result = f'{len(available_repos)}/{len(repos)}'
+
     # Tiny files download test
+    print("[3/4] Tiny files test")
     # tiny_files_point = 0
     tiny_files_total_point = 0
     tiny_files_test_count = 0
     tiny_files_total_size = 0
     tiny_files_total_time = 0
-    for repo in repos:
+    for repo in available_repos:
         files = get_test_files(repo, 'tiny')
         file_urls = [f'{mirror_url}/{repo}/{file}' for file in files]
-        file_size, time_cost = benchmark(file_urls)
+        file_size, time_cost = benchmark(file_urls, 'tiny')
         if file_size > tiny_file_total_size / 4:
             test_point = get_speed_points(file_size, time_cost)
         else:
@@ -79,15 +96,16 @@ def test_mirror(mirror_url):
         tiny_files_speed_str = '0 B/s'
 
     # Large files download test
+    print("[4/4] Large files test")
     # large_files_point = 0
     large_files_total_point = 0
     large_files_test_count = 0
     large_files_total_size = 0
     large_files_total_time = 0
-    for repo in repos:
+    for repo in available_repos:
         files = get_test_files(repo, 'large')
         file_urls = [f'{mirror_url}/{repo}/{file}' for file in files]
-        file_size, time_cost = benchmark(file_urls)
+        file_size, time_cost = benchmark(file_urls, 'large')
         if file_size > large_file_total_size / 4:
             test_point = get_speed_points(file_size, time_cost)
         else:
@@ -104,15 +122,6 @@ def test_mirror(mirror_url):
     else:
         large_files_point = 0
         large_files_speed_str = '0 B/s'
-
-    # Mirror richness test
-    available_repos = 0
-    for repo in repos:
-        r = requests.get(f'{mirror_url}/{repo}/')
-        if r.status_code == 200:
-            available_repos += 1
-    mirror_richness_point = available_repos / len(repos) * 100
-    richness_result = f'{available_repos}/{len(repos)}'
 
     final_points = 0
     final_points += ping_point * (10 / 100)

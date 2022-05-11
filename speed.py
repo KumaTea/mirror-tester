@@ -4,9 +4,10 @@ from tqdm import tqdm
 from tools import get_file_size_unit
 
 
-def benchmark(files_list):
+def benchmark(files_list, files_type='tiny'):
     file_size = 0  # Bytes
     time_cost = 0  # seconds
+    timeout = 5 if files_type.lower() == 'tiny' else 120
 
     progress = tqdm(files_list)
     for file in progress:
@@ -15,7 +16,7 @@ def benchmark(files_list):
             start_time = time.perf_counter()
             r = requests.get(file, timeout=120)
             end_time = time.perf_counter()
-        except TimeoutError:
+        except:
             return 0, 0
         if r.status_code == 200:
             file_size += len(r.content)

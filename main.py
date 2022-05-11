@@ -6,13 +6,14 @@ from mirrors import universities, commercials
 
 if __name__ == '__main__':
     results = {}
-    for repo in universities | commercials:
+    repos = universities | commercials
+    for repo in repos:
         if os.path.isfile('results/{}.txt'.format(repo)):
             print(f'Skipping {repo}')
         else:
-            print('Testing {}'.format(universities[repo]['name']))
+            print('Testing {}'.format(repos[repo]['name']))
             final_points, ping_result, tiny_files_speed_str, large_files_speed_str, richness_result = test_mirror(
-                universities[repo]['url'])
+                repos[repo]['url'])
             results[repo] = {
                 'final_points': final_points,
                 'ping_result': ping_result,
