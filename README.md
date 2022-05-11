@@ -19,7 +19,7 @@
 * 带宽：600 Mbps (75 M/s)
 
 | 镜像 | 类型 | Ping | 小文件 | 大文件 | 丰富度 | 总分 | 排名 | 备注 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --: | --: | --: | --: | --: | --- | --- |
 | [USTC](https://mirrors.ustc.edu.cn) | 高校 | 33.869 | 60.64 KB/s | 10.73 MB/s | 12/15 | 48.13 | 1 |  |
 | [阿里](https://mirrors.aliyun.com) | 商业 | 12.294 | 54.17 KB/s | 4.00 MB/s | 14/15 | 46.56 | 2 |  |
 | [NJU Mirror](https://mirrors.nju.edu.cn) | 高校 | 42.859 | 49.33 KB/s | 10.74 MB/s | 15/15 | 43.54 | 3 |  |
@@ -27,7 +27,7 @@
 | [CN99](https://mirrors.cn99.com) | 商业 | 35.558 | 60.57 KB/s | 2.01 MB/s | 4/15 | 39.74 | 5 |  |
 | [重庆大学](https://mirrors.cqu.edu.cn) | 高校 | 43.458 | 19.91 KB/s | 9.68 MB/s | 10/15 | 38.98 | 6 |  |
 | [TUNA](https://mirrors.tuna.tsinghua.edu.cn) | 高校 | 76.011 | 45.10 KB/s | 9.83 MB/s | 15/15 | 37.82 | 7 |  |
-| [西北农林科技大学](https://mirrors.nwafu.edu.cn) | 高校 | 39.37 | 50.64 KB/s | 8.52 MB/s | 5/15 | 37.18 | 8 |  |
+| [西北农林科技大学](https://mirrors.nwafu.edu.cn) | 高校 | 39.370 | 50.64 KB/s | 8.52 MB/s | 5/15 | 37.18 | 8 |  |
 | [北京外国语大学](https://mirrors.bfsu.edu.cn) | 高校 | 44.932 | 34.52 KB/s | 9.68 MB/s | 15/15 | 35.82 | 9 |  |
 | [西安交通大学](https://mirrors.xjtu.edu.cn) | 高校 | 60.043 | 43.22 KB/s | 10.46 MB/s | 10/15 | 35.40 | 10 |  |
 | [北京邮电大学](https://mirrors.bupt.edu.cn) | 高校 | 46.768 | 12.26 KB/s | 11.69 MB/s | 7/15 | 34.87 | 11 |  |

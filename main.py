@@ -16,7 +16,7 @@ if __name__ == '__main__':
                 repos[repo]['url'])
             results[repo] = {
                 'final_points': final_points,
-                'ping_result': ping_result,
+                'ping_result': '{:.3f}'.format(ping_result) if ping_result != 'Failed' else ping_result,
                 'tiny_files_speed_str': tiny_files_speed_str,
                 'large_files_speed_str': large_files_speed_str,
                 'richness_result': richness_result

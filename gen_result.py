@@ -62,7 +62,8 @@ def gen_markdown(results):
         f.write('## Results\n\n')
         header = '| Repo | Type| Ping | Tiny files | Large files | Richness | Points | Rank | Comments |\n'
         f.write('| 镜像 | 类型 | Ping | 小文件 | 大文件 | 丰富度 | 总分 | 排名 | 备注 |\n')
-        f.write('| --- ' * (header.count('|') - 1) + '|\n')
+        # f.write('| --- ' * (header.count('|') - 1) + '|\n')
+        f.write('| --- | --- | --: | --: | --: | --: | --: | --- | --- |\n')
         for repo in results:
             f.write('| [{}]({}) | {} | {} | {} | {} | {} | {} | {} | {} |\n'.format(
                 repos[repo]['name'],
