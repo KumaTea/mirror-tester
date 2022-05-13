@@ -96,7 +96,8 @@ universities = {
     },
     'xjtu': {
         'name': '西安交通大学',
-        'url': 'https://mirrors.xjtu.edu.cn'
+        'url': 'https://mirrors.xjtu.edu.cn',
+        'special': {}
     }
 }
 

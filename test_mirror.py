@@ -1,6 +1,7 @@
 import random
 import signal
 import requests
+from config import *
 from tqdm import tqdm
 from ping import min_ping
 from speed import benchmark
@@ -27,14 +28,18 @@ def get_test_files(repo, files_type):
     return files
 
 
-def get_speed_points(file_size, time_cost):
-    max_speed = 1024 * 1024 * 100  # 100MB/s
+def get_speed_points(file_size, time_cost, test_item='tiny'):
+    if test_item == 'tiny':
+        max_speed = tiny_max_speed
+    else:
+        max_speed = large_max_speed
     try:
         speed = file_size / time_cost  # Bytes/s
     except ZeroDivisionError:
         speed = 0
-    bps = get_file_size_unit(speed * 8)
-    print(f'Download speed: {bps[0]:.2f} {bps[1][:1]}bps')
+    bytes_count, unit = get_file_size_unit(speed * 8)
+    unit_str = f'{unit[:1]}bps' if not unit.startswith('B') else 'bps'
+    print(f'  Download speed: {bytes_count:.2f} {unit_str}')
     if speed > max_speed:
         return 100
     else:
@@ -52,18 +57,17 @@ def test_mirror(mirror):
     ping_point = 0
     ping_result = min_ping(domain)
     if ping_result:
-        print(f'Ping result: {ping_result} ms')
+        print(f'  Ping result: {ping_result} ms')
         ping_point = 100.0 - ping_result
     else:
         ping_result = 'Failed'
-        print("Ping test failed")
+        print("  Ping test failed")
 
     repos = get_test_repos()
 
     # Mirror richness test
     print("[2/4] Available repos test")
     available_repos = []
-    avail_test_timeout = 5
     for repo in tqdm(repos):
         repo_path = all_mirrors[mirror]['special'][repo] if repo in all_mirrors[mirror]['special'] else repo
         try:
@@ -73,7 +77,7 @@ def test_mirror(mirror):
                 available_repos.append(repo)
             signal.alarm(0)
         except:
-            print(f'{repo} is not available')
+            print(f'  {repo} is not available')
             pass
         finally:
             signal.alarm(0)
@@ -81,7 +85,7 @@ def test_mirror(mirror):
     richness_result = f'{len(available_repos)}/{len(repos)}'
 
     # prepare repos for download test
-    download_repos = random.sample(available_repos, 5) if len(available_repos) > 5 else available_repos
+    download_repos = random.sample(available_repos, repo_samples) if len(available_repos) > repo_samples else available_repos
 
     # Tiny files download test
     print("[3/4] Tiny files test")
@@ -90,25 +94,24 @@ def test_mirror(mirror):
     tiny_files_test_count = 0
     tiny_files_total_size = 0
     tiny_files_total_time = 0
-    tiny_test_timeout = 5
-    tiny_files_samples = 50
     for repo in download_repos:
         files = random.sample(get_test_files(repo, 'tiny'), tiny_files_samples)
         repo_path = all_mirrors[mirror]['special'][repo] if repo in all_mirrors[mirror]['special'] else repo
         file_urls = [f'{mirror_url}/{repo_path}/{file}' for file in files]
         file_size, time_cost = benchmark(file_urls, 'tiny', tiny_test_timeout)
 
-        test_point = get_speed_points(file_size, time_cost)
+        test_point = get_speed_points(file_size, time_cost, 'tiny')
         if test_point:
             tiny_files_total_point += test_point
             tiny_files_test_count += 1
             tiny_files_total_size += file_size
             tiny_files_total_time += time_cost
     if tiny_files_test_count:
-        tiny_files_point = 1024 * tiny_files_total_point / tiny_files_test_count
+        tiny_files_point = tiny_files_total_point / tiny_files_test_count
         tiny_files_point = 100 if tiny_files_point > 100 else tiny_files_point
         tiny_files_speed, tiny_files_unit = get_file_size_unit(tiny_files_total_size / tiny_files_total_time)
-        tiny_files_speed_str = f'{tiny_files_speed:.2f} {tiny_files_unit[0]}B/s'
+        tiny_files_unit_str = f'{tiny_files_unit[0]}B/s' if not tiny_files_unit.startswith('B') else 'B/s'
+        tiny_files_speed_str = f'{tiny_files_speed:.2f} {tiny_files_unit_str}'
     else:
         tiny_files_point = 0
         tiny_files_speed_str = '0 B/s'
@@ -120,34 +123,33 @@ def test_mirror(mirror):
     large_files_test_count = 0
     large_files_total_size = 0
     large_files_total_time = 0
-    large_test_timeout = 120
-    large_files_samples = 5
     for repo in download_repos:
         files = random.sample(get_test_files(repo, 'large'), large_files_samples)
         repo_path = all_mirrors[mirror]['special'][repo] if repo in all_mirrors[mirror]['special'] else repo
         file_urls = [f'{mirror_url}/{repo_path}/{file}' for file in files]
         file_size, time_cost = benchmark(file_urls, 'large', large_test_timeout)
 
-        test_point = get_speed_points(file_size, time_cost)
+        test_point = get_speed_points(file_size, time_cost, 'large')
         if test_point:
             large_files_total_point += test_point
             large_files_test_count += 1
             large_files_total_size += file_size
             large_files_total_time += time_cost
     if large_files_test_count:
-        large_files_point = 1024 * large_files_total_point / large_files_test_count
+        large_files_point = large_files_total_point / large_files_test_count
         large_files_point = 100 if large_files_point > 100 else large_files_point
         large_files_speed, large_files_unit = get_file_size_unit(large_files_total_size / large_files_total_time)
-        large_files_speed_str = f'{large_files_speed:.2f} {large_files_unit[0]}B/s'
+        large_files_unit_str = f'{large_files_unit[0]}B/s' if not large_files_unit.startswith('B') else 'B/s'
+        large_files_speed_str = f'{large_files_speed:.2f} {large_files_unit_str}'
     else:
         large_files_point = 0
         large_files_speed_str = '0 B/s'
 
     final_points = 0
-    final_points += ping_point * (10 / 100)
-    final_points += tiny_files_point * (50 / 100)
-    final_points += large_files_point * (30 / 100)
-    final_points += mirror_richness_point * (10 / 100)
+    final_points += ping_point            * (rates['ping']  / 100)
+    final_points += tiny_files_point      * (rates['tiny']  / 100)
+    final_points += large_files_point     * (rates['large'] / 100)
+    final_points += mirror_richness_point * (rates['rich']  / 100)
     final_points_str = f'{final_points:.2f}'
     print(f'Final points: {final_points_str}')
 

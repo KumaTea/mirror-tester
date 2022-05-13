@@ -8,4 +8,5 @@ def timeout_handler(signum, frame):
 def initialize():
     # Initialize the signal handler
     signal.signal(signal.SIGALRM, timeout_handler)
-    return print('Initialized!')
+    print('Initialized!')
+    return True

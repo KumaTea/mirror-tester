@@ -8,6 +8,7 @@ from test_mirror import test_mirror
 if __name__ == '__main__':
     initialize()
 
+    print('Start testing...')
     results = {}
     for mirror in all_mirrors:
         if os.path.isfile('results/{}.txt'.format(mirror)):
