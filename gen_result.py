@@ -75,7 +75,7 @@ def gen_markdown(results):
                 results[mirror]['richness'],
                 results[mirror]['points'],  # '{:.2f}'.format(10 * float(results[mirror]['points']) ** 0.5),
                 list(results.keys()).index(mirror) + 1,
-                ''
+                all_mirrors[mirror]['comments']
             ))
     return True
 

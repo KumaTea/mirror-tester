@@ -47,4 +47,4 @@
 | [北京理工大学](https://mirror.bit.edu.cn) | 高校 | Failed | 28.21 KB/s | 1.30 MB/s | 9/16 | 5.17 | 25 | 禁 Ping |
 | [东莞理工学院](https://mirrors.dgut.edu.cn) | 高校 | Failed | 26.28 KB/s | 0 B/s | 6/16 | 3.49 | 26 | 禁 Ping |
 | [搜狐](https://mirrors.sohu.com) | 商业 | 103.47 | 22.63 KB/s | 0 B/s | 7/16 | 3.36 | 27 |  |
-| [SYSU Matrix](https://mirrors.matrix.moe) | 高校 | Failed | 0 B/s | 0 B/s | 0/16 | 0.00 | 28 | 内网 [FS](mirrors.py#L106) |
+| [SYSU Matrix](https://mirrors.matrix.moe) | 高校 | Failed | 0 B/s | 0 B/s | 0/16 | 0.00 | 28 | 内网 [FS](mirrors.py#L125) |
