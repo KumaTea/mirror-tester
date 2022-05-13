@@ -1,10 +1,9 @@
 import os
 import csv
-from mirrors import universities, commercials
+from mirrors import all_mirrors
 
 
 results_path = 'results'
-repos = universities | commercials
 
 
 def read_results(path):
@@ -64,17 +63,17 @@ def gen_markdown(results):
         f.write('| 镜像 | 类型 | Ping | 小文件 | 大文件 | 丰富度 | 总分 | 排名 | 备注 |\n')
         # f.write('| --- ' * (header.count('|') - 1) + '|\n')
         f.write('| --- | --- | --: | --: | --: | --: | --: | --- | --- |\n')
-        for repo in results:
+        for mirror in results:
             f.write('| [{}]({}) | {} | {} | {} | {} | {} | {} | {} | {} |\n'.format(
-                repos[repo]['name'],
-                repos[repo]['url'],
-                '高校' if repo in universities else '商业',
-                results[repo]['ping'],
-                results[repo]['tiny_speed'],
-                results[repo]['large_speed'],
-                results[repo]['richness'],
-                results[repo]['points'],
-                list(results.keys()).index(repo) + 1,
+                all_mirrors[mirror]['name'],
+                all_mirrors[mirror]['url'],
+                '高校' if mirror in universities else '商业',
+                results[mirror]['ping'],
+                results[mirror]['tiny_speed'],
+                results[mirror]['large_speed'],
+                results[mirror]['richness'],
+                results[mirror]['points'],
+                list(results.keys()).index(mirror) + 1,
                 ''
             ))
     return True

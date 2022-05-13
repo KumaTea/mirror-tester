@@ -1,23 +1,29 @@
 import time
+import signal
 import requests
 from tqdm import tqdm
 from tools import get_file_size_unit
 
 
-def benchmark(files_list, files_type='tiny'):
+def benchmark(files_list, files_type='tiny', timeout=0):
     file_size = 0  # Bytes
     time_cost = 0  # seconds
-    timeout = 5 if files_type.lower() == 'tiny' else 120
+    if not timeout:
+        timeout = 5 if files_type.lower() == 'tiny' else 120
 
     progress = tqdm(files_list)
     for file in progress:
         progress.set_description(f"Downloading {file}")
         try:
+            signal.alarm(timeout)
             start_time = time.perf_counter()
-            r = requests.get(file, timeout=120)
+            r = requests.get(file, timeout=timeout)
             end_time = time.perf_counter()
         except:
+            signal.alarm(0)
             return 0, 0
+        finally:
+            signal.alarm(0)
         if r.status_code == 200:
             file_size += len(r.content)
             time_cost += end_time - start_time

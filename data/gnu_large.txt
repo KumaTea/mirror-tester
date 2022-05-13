@@ -1,0 +1,10 @@
+binutils/binutils-2.35.1.tar.gz
+gcc/gcc-4.5.0/gcc-4.5.0.tar.bz2
+gdb/gdb-7.11.tar.gz
+gcc/gcc-4.8.4/gcc-4.8.4.tar.gz
+gcc/gcc-4.5.4/gcc-core-4.5.4.tar.bz2
+gcc/gcc-4.6.4/gcc-4.6.4.tar.gz
+gcc/gcc-9.4.0/gcc-9.4.0.tar.gz
+gcc/gcc-5.5.0/gcc-5.5.0.tar.gz
+gcc/gcc-8.3.0/gcc-8.3.0.tar.xz
+gcc/gcc-4.4.3/gcc-4.4.3.tar.gz
