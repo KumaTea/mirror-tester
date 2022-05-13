@@ -98,7 +98,17 @@ universities = {
         'name': '西安交通大学',
         'url': 'https://mirrors.xjtu.edu.cn',
         'special': {}
-    }
+    },
+    'sysu': {
+        # This mirror should be excluded
+        # since it only opens to its
+        # internal networks, but it's joined
+        # here to act as a failsafe test
+        'name': 'SYSU Matrix',
+        'url': 'https://mirrors.matrix.moe',
+        'special': {}
+    },
+
 }
 
 commercials = {

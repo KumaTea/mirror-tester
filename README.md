@@ -36,14 +36,15 @@
 | [北京邮电大学](https://mirrors.bupt.edu.cn) | 高校 | 44.707 | 50.01 KB/s | 10.08 MB/s | 7/16 | 14.15 | 14 |  |
 | [首都在线](https://mirrors.yun-idc.com) | 商业 | 46.03 | 29.78 KB/s | 8.29 MB/s | 7/16 | 12.39 | 15 |  |
 | [CN99](https://mirrors.cn99.com) | 商业 | 35.161 | 67.26 KB/s | 2.01 MB/s | 4/16 | 11.92 | 16 |  |
-| [华为](https://repo.huaweicloud.com) | 商业 | Failed | 43.64 KB/s | 6.85 MB/s | 16/16 | 11.69 | 17 |  |
+| [华为](https://repo.huaweicloud.com) | 商业 | Failed | 43.64 KB/s | 6.85 MB/s | 16/16 | 11.69 | 17 | 主站域名不同 |
 | [北京交通大学](https://mirror.bjtu.edu.cn) | 高校 | 47.81 | 36.37 KB/s | 0 B/s | 12/16 | 11.47 | 18 |  |
 | [大连东软信息学院](https://mirrors.neusoft.edu.cn) | 高校 | 69.065 | 39.16 KB/s | 6.61 MB/s | 9/16 | 11.30 | 19 |  |
 | [Geekpie](https://mirrors.shanghaitech.edu.cn) | 高校 | 63.137 | 22.42 KB/s | 10.68 MB/s | 7/16 | 11.23 | 20 |  |
 | [网易](https://mirrors.163.com) | 商业 | 31.625 | 13.78 KB/s | 0 B/s | 8/16 | 10.50 | 21 |  |
-| [兰州大学](https://mirror.lzu.edu.cn) | 高校 | Failed | 27.73 KB/s | 10.74 MB/s | 12/16 | 9.94 | 22 |  |
+| [兰州大学](https://mirror.lzu.edu.cn) | 高校 | Failed | 27.73 KB/s | 10.74 MB/s | 12/16 | 9.94 | 22 | 禁 Ping |
 | [南京邮电大学](https://mirrors.njupt.edu.cn) | 高校 | 42.841 | 2.07 KB/s | 312.25 KB/s | 7/16 | 8.55 | 23 |  |
-| [重庆邮电大学](https://mirrors.cqupt.edu.cn) | 高校 | Failed | 47.65 KB/s | 7.24 MB/s | 9/16 | 8.20 | 24 |  |
-| [北京理工大学](https://mirror.bit.edu.cn) | 高校 | Failed | 28.21 KB/s | 1.30 MB/s | 9/16 | 5.17 | 25 |  |
-| [东莞理工学院](https://mirrors.dgut.edu.cn) | 高校 | Failed | 26.28 KB/s | 0 B/s | 6/16 | 3.49 | 26 |  |
+| [重庆邮电大学](https://mirrors.cqupt.edu.cn) | 高校 | Failed | 47.65 KB/s | 7.24 MB/s | 9/16 | 8.20 | 24 | 禁 Ping |
+| [北京理工大学](https://mirror.bit.edu.cn) | 高校 | Failed | 28.21 KB/s | 1.30 MB/s | 9/16 | 5.17 | 25 | 禁 Ping |
+| [东莞理工学院](https://mirrors.dgut.edu.cn) | 高校 | Failed | 26.28 KB/s | 0 B/s | 6/16 | 3.49 | 26 | 禁 Ping |
 | [搜狐](https://mirrors.sohu.com) | 商业 | 103.47 | 22.63 KB/s | 0 B/s | 7/16 | 3.36 | 27 |  |
+| [SYSU Matrix](https://mirrors.matrix.moe) | 高校 | Failed | 0 B/s | 0 B/s | 0/16 | 0.00 | 28 | 内网 [FS](mirrors.py#L106) |
