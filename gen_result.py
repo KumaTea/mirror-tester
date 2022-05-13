@@ -1,6 +1,6 @@
 import os
 import csv
-from mirrors import all_mirrors
+from mirrors import *
 
 
 results_path = 'results'
@@ -57,11 +57,12 @@ def gen_markdown(results):
     results = sort_results(results)
 
     # generate results in table format
-    with open(os.path.join(results_path, 'results.md'), 'w') as f:
-        f.write('## Results\n\n')
+    with open(os.path.join(results_path, 'results.md'), 'w', encoding='utf-8') as f:
+        # f.write('## Results\n\n')
         header = '| Repo | Type| Ping | Tiny files | Large files | Richness | Points | Rank | Comments |\n'
         f.write('| 镜像 | 类型 | Ping | 小文件 | 大文件 | 丰富度 | 总分 | 排名 | 备注 |\n')
         # f.write('| --- ' * (header.count('|') - 1) + '|\n')
+        # f.write('| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n')
         f.write('| --- | --- | --: | --: | --: | --: | --: | --- | --- |\n')
         for mirror in results:
             f.write('| [{}]({}) | {} | {} | {} | {} | {} | {} | {} | {} |\n'.format(
@@ -72,7 +73,7 @@ def gen_markdown(results):
                 results[mirror]['tiny_speed'],
                 results[mirror]['large_speed'],
                 results[mirror]['richness'],
-                results[mirror]['points'],
+                results[mirror]['points'],  # '{:.2f}'.format(10 * float(results[mirror]['points']) ** 0.5),
                 list(results.keys()).index(mirror) + 1,
                 ''
             ))
