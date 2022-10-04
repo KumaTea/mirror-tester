@@ -58,7 +58,7 @@ def test_mirror(mirror):
     ping_result = min_ping(domain)
     if ping_result:
         print(f'  Ping result: {ping_result} ms')
-        ping_point = 100.0 - ping_result
+        ping_point = max([100.0 - ping_result, 0.])
     else:
         ping_result = 'Failed'
         print("  Ping test failed")
