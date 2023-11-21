@@ -2,23 +2,11 @@
 
 import os
 import sys
+import time
 import random
+from config import *
 from search import recurse_search
 from configparser import ConfigParser
-
-
-tiny_file_min = 1.0  # KiB
-tiny_file_max = 25.0  # KiB
-large_file_min = 25.0  # MiB
-large_file_max = 125.0  # MiB
-
-tiny_file_count = 100
-large_file_count = 10
-
-tiny_file_total_size = 1250.0  # KiB
-tiny_file_total_size_delta = 50.0  # KiB
-large_file_total_size = 750.0  # MiB
-large_file_total_size_delta = 25.0  # MiB
 
 
 def pick_files(file_list, file_count, total_size, total_size_delta):
@@ -31,10 +19,9 @@ def pick_files(file_list, file_count, total_size, total_size_delta):
             break
         else:
             if tries % 100 == 0:
-                sys.stdout.write('\rTries: {}, size: {}'.format(tries, sum(file_sizes)))
+                sys.stdout.write('\rTries: {}\tsize: {:.2f}'.format(tries, sum(file_sizes)))
                 total_size_delta += 0.1
-    print(f'Tries: {tries}')
-    print(f'Size: {sum(file_sizes)}\n')
+    print('\nTries: {}\tsize: {:.2f}'.format(tries, sum(file_sizes)))
     return [file[0] for file in files]
 
 
@@ -50,8 +37,11 @@ def main(repo=None, urls=None):
     large_files = []
 
     for url in url_list:
+        t_0 = time.perf_counter()
         print(f'\nProcessing: {url}')
         files.extend(recurse_search(url))
+        t_1 = time.perf_counter()
+        print('\nTime cost: {:.2f}s'.format(t_1 - t_0))
 
     for file in files:
         link = file[0]
@@ -61,12 +51,14 @@ def main(repo=None, urls=None):
         if unit == 'KiB':
             if tiny_file_min <= float(size) <= tiny_file_max:
                 tiny_files.append((link, float(size)))
-        else:  # elif unit == 'MiB':
+        elif unit == 'MiB':
             if large_file_min <= float(size) <= large_file_max:
                 large_files.append((link, float(size)))
 
     tiny_files = list(set(tiny_files))
     large_files = list(set(large_files))
+    print(f'Total tiny files: {len(tiny_files)}')
+    print(f'Total large files: {len(large_files)}')
 
     print(f'Picking tiny files...')
     picked_tiny_files = pick_files(tiny_files, tiny_file_count, tiny_file_total_size, tiny_file_total_size_delta)
@@ -91,7 +83,7 @@ def main(repo=None, urls=None):
 
 
 if __name__ == '__main__':
-    interactive = input('Interactive? (y/n): ')
+    interactive = input('Interactive? (y/N): ')
     if interactive.lower() == 'y':
         main()
     else:
@@ -99,7 +91,10 @@ if __name__ == '__main__':
         config.read('data/config.ini')
         for i in config.sections():
             if not os.path.isfile(f'data/{i}_tiny.txt') or not os.path.isfile(f'data/{i}_large.txt'):
+                t0 = time.perf_counter()
                 print(f'Processing {i}')
                 main(i, config[i]['urls'])
+                t1 = time.perf_counter()
+                print('Total time cost: {:.2f}s\n\n\n'.format(t1-t0))
             else:
                 print(f'Skipping {i}')

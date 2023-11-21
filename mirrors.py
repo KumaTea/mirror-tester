@@ -1,6 +1,10 @@
+from inspect import currentframe, getframeinfo
+
+
 # Public Mirrors
 
 # Universities
+# https://mirrors.cernet.edu.cn/site
 universities = {
     'bfsu': {
         'name': '北京外国语大学',
@@ -47,6 +51,12 @@ universities = {
     'hit': {
         'name': '哈尔滨工业大学',
         'url': 'https://mirrors.hit.edu.cn',
+        'special': {},
+        'comments': ''
+    },
+    'iscas': {
+        'name': 'ISCAS',  # 中科院
+        'url': 'https://mirror.iscas.ac.cn/',
         'special': {},
         'comments': ''
     },
@@ -123,12 +133,10 @@ universities = {
         # since it only opens to its
         # internal networks, but it's joined
         # here to act as a failsafe test.
-        # INDEX_POINT_SYSU
         'name': 'SYSU Matrix',
         'url': 'https://mirrors.matrix.moe',
         'special': {},
-        # 'comments': '内网 [FS](mirrors.py#L{})'.format(open('mirrors.py', 'r', encoding='utf-8').read()[:open('mirrors.py', 'r', encoding='utf-8').read().index('INDEX_POINT_SYSU')].count('\n'))
-        'comments': '内网 [FS](mirrors.py#L{})'.format((h.close() or ((f := open('mirrors.py', 'r', encoding='utf-8')).read()[:(f.close() or (g := open('mirrors.py', 'r', encoding='utf-8')).read().index(g.close() or 'INDEX_POINT_SYSU'))].count('\n'))) if 'INDEX_POINT_SYSU' in (h := open('mirrors.py', 'r', encoding='utf-8')).read() else 0)
+        'comments': '内网 [FS](mirrors.py#L{})'.format(getframeinfo(currentframe()).lineno - 7)
     },
 }
 
@@ -184,11 +192,3 @@ commercials = {
 }
 
 all_mirrors = universities | commercials
-
-# Dismissed mirrors
-# 同步镜像过少
-# 不向公网开放
-dismissed = [
-    'dlut'
-    'hust'
-]

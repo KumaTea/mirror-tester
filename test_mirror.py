@@ -1,3 +1,4 @@
+import math
 import random
 import signal
 import requests
@@ -8,7 +9,6 @@ from speed import benchmark
 from mirrors import all_mirrors
 from tools import get_file_size_unit
 from configparser import ConfigParser
-from gen_files import tiny_file_total_size, large_file_total_size
 
 
 def get_test_repos():
@@ -90,7 +90,7 @@ def test_mirror(mirror):
     # Tiny files download test
     print("[3/4] Tiny files test")
     # tiny_files_point = 0
-    tiny_files_total_point = 0
+    tiny_files_points = []
     tiny_files_test_count = 0
     tiny_files_total_size = 0
     tiny_files_total_time = 0
@@ -102,12 +102,17 @@ def test_mirror(mirror):
 
         test_point = get_speed_points(file_size, time_cost, 'tiny')
         if test_point:
-            tiny_files_total_point += test_point
+            tiny_files_points.append(test_point)
             tiny_files_test_count += 1
             tiny_files_total_size += file_size
             tiny_files_total_time += time_cost
     if tiny_files_test_count:
-        tiny_files_point = tiny_files_total_point / tiny_files_test_count
+        # sort
+        tiny_files_points.sort()
+        # remove the 10% highest and lowest
+        tiny_files_points = tiny_files_points[math.ceil(tiny_files_test_count * 0.1):math.floor(tiny_files_test_count * 0.9)]
+        # calculate average
+        tiny_files_point = sum(tiny_files_points) / len(tiny_files_points)
         tiny_files_point = 100 if tiny_files_point > 100 else tiny_files_point
         tiny_files_speed, tiny_files_unit = get_file_size_unit(tiny_files_total_size / tiny_files_total_time)
         tiny_files_unit_str = f'{tiny_files_unit[0]}B/s' if not tiny_files_unit.startswith('B') else 'B/s'
@@ -119,7 +124,7 @@ def test_mirror(mirror):
     # Large files download test
     print("[4/4] Large files test")
     # large_files_point = 0
-    large_files_total_point = 0
+    large_files_points = []
     large_files_test_count = 0
     large_files_total_size = 0
     large_files_total_time = 0
@@ -131,12 +136,17 @@ def test_mirror(mirror):
 
         test_point = get_speed_points(file_size, time_cost, 'large')
         if test_point:
-            large_files_total_point += test_point
+            large_files_points.append(test_point)
             large_files_test_count += 1
             large_files_total_size += file_size
             large_files_total_time += time_cost
     if large_files_test_count:
-        large_files_point = large_files_total_point / large_files_test_count
+        # sort
+        large_files_points.sort()
+        # remove the 10% highest and lowest
+        large_files_points = large_files_points[math.ceil(tiny_files_test_count * 0.1):math.floor(tiny_files_test_count * 0.9)]
+        # calculate average
+        large_files_point = sum(large_files_points) / len(large_files_points)
         large_files_point = 100 if large_files_point > 100 else large_files_point
         large_files_speed, large_files_unit = get_file_size_unit(large_files_total_size / large_files_total_time)
         large_files_unit_str = f'{large_files_unit[0]}B/s' if not large_files_unit.startswith('B') else 'B/s'

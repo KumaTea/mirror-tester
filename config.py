@@ -13,9 +13,22 @@ large_test_timeout = 120
 
 # Samples
 repo_samples = 4
-tiny_files_samples = 25
-large_files_samples = 3
+tiny_files_samples = 50
+large_files_samples = 10
 
 # Max speed
 tiny_max_speed = 1000 * 1024  # 1000 KB/s
-large_max_speed = 100 * 1024 * 1024 # 100 MB/s
+large_max_speed = 100 * 1024 * 1024  # 100 MB/s
+
+tiny_file_min = 1.0  # KiB
+tiny_file_max = 25.0  # KiB
+large_file_min = 25.0  # MiB
+large_file_max = 125.0  # MiB
+
+tiny_file_count = 100
+large_file_count = 10
+
+tiny_file_total_size = 1250.0  # KiB
+tiny_file_total_size_delta = 50.0  # KiB
+large_file_total_size = 750.0  # MiB
+large_file_total_size_delta = 25.0  # MiB

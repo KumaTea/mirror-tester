@@ -1,0 +1,6 @@
+requests
+tqdm
+beautifulsoup4
+tcping
+git+https://github.com/dynos01/tcping.git
+# with support for IPv6
