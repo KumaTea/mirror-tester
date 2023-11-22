@@ -72,10 +72,13 @@ def test_mirror(mirror):
         repo_path = all_mirrors[mirror]['special'][repo] if repo in all_mirrors[mirror]['special'] else repo
         try:
             signal.alarm(avail_test_timeout)
-            r = requests.get(f'{mirror_url}/{repo_path}/', timeout=avail_test_timeout)
-            if r.status_code == 200:
-                available_repos.append(repo)
-            signal.alarm(0)
+            files = random.sample(get_test_files(repo, 'tiny'), 3)
+            file_urls = [f'{mirror_url}/{repo_path}/{file}' for file in files]
+            for file_url in file_urls:
+                r = requests.head(file_url, timeout=avail_test_timeout)
+                if r.status_code == 200:
+                    available_repos.append(repo)
+                    break
         except:
             print(f'  {repo} is not available')
             pass

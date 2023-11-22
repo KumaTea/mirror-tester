@@ -102,6 +102,12 @@ universities = {
         'special': {},
         'comments': '与 sjtu 互补'
     },
+    'sustech': {
+        'name': '南方科技大学',
+        'url': 'https://mirrors.sustech.edu.cn',
+        'special': {},
+        'comments': ''
+    },
     'tuna': {
         'name': '清华大学 TUNA',  # 清华大学
         'url': 'https://mirrors.tuna.tsinghua.edu.cn',
@@ -131,6 +137,12 @@ universities = {
         'url': 'https://mirrors.matrix.moe',
         'special': {},
         'comments': '内网 [FS](mirrors.py#L{})'.format(getframeinfo(currentframe()).lineno - 7)
+    },
+    'zju': {
+        'name': '浙江大学',
+        'url': 'https://mirrors.zju.edu.cn',
+        'special': {},
+        'comments': ''
     },
 }
 
