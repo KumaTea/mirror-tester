@@ -12,9 +12,9 @@ tiny_test_timeout = 5
 large_test_timeout = 120
 
 # Samples
-repo_samples = 4
-tiny_files_samples = 50
-large_files_samples = 10
+repo_samples = 5
+tiny_files_samples = 100
+large_files_samples = 5
 
 # Max speed
 tiny_max_speed = 1000 * 1024  # 1000 KB/s

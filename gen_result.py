@@ -64,16 +64,17 @@ def gen_markdown(results):
         # f.write('| --- ' * (header.count('|') - 1) + '|\n')
         # f.write('| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n')
         f.write('| --- | --- | --: | --: | --: | --: | --: | --- | --- |\n')
+        max_point = max([10 * float(results[mirror]['points']) ** 0.5 for mirror in results])
         for mirror in results:
             f.write('| [{}]({}) | {} | {} | {} | {} | {} | {} | {} | {} |\n'.format(
                 all_mirrors[mirror]['name'],
                 all_mirrors[mirror]['url'],
                 '高校' if mirror in universities else '商业',
-                results[mirror]['ping'],
+                '{:.2f}'.format(float(results[mirror]['ping'])) if results[mirror]['ping'] != 'Failed' else 'Failed',
                 results[mirror]['tiny_speed'],
                 results[mirror]['large_speed'],
                 results[mirror]['richness'],
-                results[mirror]['points'],  # '{:.2f}'.format(10 * float(results[mirror]['points']) ** 0.5),
+                '{:.2f}'.format((10 * float(results[mirror]['points']) ** 0.5) / max_point * 100),
                 list(results.keys()).index(mirror) + 1,
                 all_mirrors[mirror]['comments']
             ))

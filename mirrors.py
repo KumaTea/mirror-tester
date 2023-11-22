@@ -16,7 +16,7 @@ universities = {
         'name': '北京理工大学',
         'url': 'https://mirror.bit.edu.cn',
         'special': {},
-        'comments': '禁 Ping'
+        'comments': ''
     },
     'bjtu': {
         'name': '北京交通大学',
@@ -40,13 +40,7 @@ universities = {
         'name': '重庆邮电大学',
         'url': 'https://mirrors.cqupt.edu.cn',
         'special': {},
-        'comments': '禁 Ping'
-    },
-    'dgut': {
-        'name': '东莞理工学院',
-        'url': 'https://mirrors.dgut.edu.cn',
-        'special': {},
-        'comments': '禁 Ping'
+        'comments': ''
     },
     'hit': {
         'name': '哈尔滨工业大学',
@@ -64,7 +58,7 @@ universities = {
         'name': '兰州大学',
         'url': 'https://mirror.lzu.edu.cn',
         'special': {},
-        'comments': '禁 Ping'
+        'comments': ''
     },
     'neusoft': {
         'name': '大连东软信息学院',
@@ -73,7 +67,7 @@ universities = {
         'comments': ''
     },
     'nju': {
-        'name': 'NJU Mirror',  # 南京大学
+        'name': '南京大学',  # 南京大学
         'url': 'https://mirrors.nju.edu.cn',
         'special': {},
         'comments': ''
@@ -91,31 +85,31 @@ universities = {
         'comments': ''
     },
     'shanghaitech': {
-        'name': 'Geekpie',
+        'name': '上海科技大学',
         'url': 'https://mirrors.shanghaitech.edu.cn',
         'special': {},
         'comments': ''
     },
     'sjtu': {
-        'name': 'sjtu',  # 上海交通大学,
+        'name': '上交 sjtu',  # 上海交通大学,
         'url': 'https://mirror.sjtu.edu.cn',
         'special': {},
-        'comments': ''
+        'comments': '与 sjtug 互补'
     },
     'sjtug': {
-        'name': 'sjtug',  # 上海交通大学,
+        'name': '上交 sjtug',  # 上海交通大学,
         'url': 'https://mirrors.sjtug.sjtu.edu.cn',
         'special': {},
-        'comments': ''
+        'comments': '与 sjtu 互补'
     },
     'tuna': {
-        'name': 'TUNA',  # 清华大学
+        'name': '清华大学 TUNA',  # 清华大学
         'url': 'https://mirrors.tuna.tsinghua.edu.cn',
         'special': {},
         'comments': ''
     },
     'ustc': {
-        'name': 'USTC',  # 中国科学技术大学
+        'name': '中科大 USTC',  # 中国科学技术大学
         'url': 'https://mirrors.ustc.edu.cn',
         'special': {
             'kernel': 'kernel.org'
@@ -133,7 +127,7 @@ universities = {
         # since it only opens to its
         # internal networks, but it's joined
         # here to act as a failsafe test.
-        'name': 'SYSU Matrix',
+        'name': '中大 Matrix',
         'url': 'https://mirrors.matrix.moe',
         'special': {},
         'comments': '内网 [FS](mirrors.py#L{})'.format(getframeinfo(currentframe()).lineno - 7)
@@ -159,21 +153,9 @@ commercials = {
         'special': {},
         'comments': '主站域名不同'
     },
-    'cn99': {
-        'name': 'CN99',
-        'url': 'https://mirrors.cn99.com',
-        'special': {},
-        'comments': ''
-    },
     '163': {
         'name': '网易',
         'url': 'https://mirrors.163.com',
-        'special': {},
-        'comments': ''
-    },
-    'cnnic': {
-        'name': 'CNNIC',
-        'url': 'https://mirrors.cnnic.cn',
         'special': {},
         'comments': ''
     },

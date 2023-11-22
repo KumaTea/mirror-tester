@@ -5,7 +5,7 @@ from mirrors import all_mirrors
 from test_mirror import test_mirror
 
 
-if __name__ == '__main__':
+def main():
     initialize()
 
     print('Start testing...')
@@ -45,3 +45,10 @@ if __name__ == '__main__':
             ])
 
     print('Done!')
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        exit(1)

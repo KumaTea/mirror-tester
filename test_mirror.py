@@ -106,11 +106,13 @@ def test_mirror(mirror):
             tiny_files_test_count += 1
             tiny_files_total_size += file_size
             tiny_files_total_time += time_cost
+    print(f'  {tiny_files_points=}')
     if tiny_files_test_count:
-        # sort
-        tiny_files_points.sort()
-        # remove the 10% highest and lowest
-        tiny_files_points = tiny_files_points[math.ceil(tiny_files_test_count * 0.1):math.floor(tiny_files_test_count * 0.9)]
+        if len(tiny_files_points) >= 3:
+            # sort
+            tiny_files_points.sort()
+            # remove the 10% highest and lowest
+            tiny_files_points = tiny_files_points[math.ceil(tiny_files_test_count * 0.1):math.floor(tiny_files_test_count * 0.9)]
         # calculate average
         tiny_files_point = sum(tiny_files_points) / len(tiny_files_points)
         tiny_files_point = 100 if tiny_files_point > 100 else tiny_files_point
@@ -140,11 +142,13 @@ def test_mirror(mirror):
             large_files_test_count += 1
             large_files_total_size += file_size
             large_files_total_time += time_cost
+    print(f'  {large_files_points=}')
     if large_files_test_count:
-        # sort
-        large_files_points.sort()
-        # remove the 10% highest and lowest
-        large_files_points = large_files_points[math.ceil(tiny_files_test_count * 0.1):math.floor(tiny_files_test_count * 0.9)]
+        if len(large_files_points) >= 3:
+            # sort
+            large_files_points.sort()
+            # remove the 10% highest and lowest
+            large_files_points = large_files_points[math.ceil(large_files_test_count * 0.1):math.floor(large_files_test_count * 0.9)]
         # calculate average
         large_files_point = sum(large_files_points) / len(large_files_points)
         large_files_point = 100 if large_files_point > 100 else large_files_point
